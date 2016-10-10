@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+#==================================================
+#
+#  mfa: Get authentication code from command line
+#
+#==================================================
+
+# Check if the MFA_SECRET_KEY is set
+if [[ -z $MFA_SECRET_KEY ]]; then
+  echo "ERROR: To use $(basename $0) you need to set MFA_SECRET_KEY environment variable"
+  echo "       in .bashrc or via an environment variable management tool (such as direnv)."
+  exit 1
+fi
+
+oathtool --totp -b $MFA_SECRET_KEY | xargs echo -n | pbcopy
