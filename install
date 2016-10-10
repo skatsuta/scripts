@@ -1,0 +1,12 @@
+#!/usr/bin/env bash -u
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)/bin"
+TARGET_DIR="$(cd "${1:-$HOME/bin}" && pwd)" # defalut is $HOME/bin
+
+mkdir -p "$TARGET_DIR"
+for script in `ls "$SCRIPT_DIR"`; do
+  # skip if already exists
+  [[ -f "$TARGET_DIR/$script" ]] && continue
+
+  ln -s "$SCRIPT_DIR/$script" "$TARGET_DIR"
+done
