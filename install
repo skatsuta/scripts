@@ -1,5 +1,6 @@
 #!/usr/bin/env bash -u
 
+mkdir -p "$HOME/bin"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)/bin"
 TARGET_DIR="$(cd "${1:-$HOME/bin}" && pwd)" # defalut is $HOME/bin
 
