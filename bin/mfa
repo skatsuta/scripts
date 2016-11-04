@@ -14,4 +14,4 @@ if [[ -z $MFA_SECRET_KEY ]]; then
 fi
 
 oathtool --totp -b $MFA_SECRET_KEY | xargs echo -n | pbcopy
-echo "Copy '$(pbpaste)' to your clipboard."
+echo "Copied '$(pbpaste)' to your clipboard."
