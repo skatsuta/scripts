@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 set -ux
 
+# This also update casks
 brew update
+
 brew upgrade
 
-brew cask update
 brew cu
 [[ $? -ne 0 ]] && brew tap buo/cask-upgrade && brew cu
 
