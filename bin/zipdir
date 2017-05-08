@@ -12,5 +12,6 @@ fi
 TARGET_DIR=${1:-.}
 cd "$TARGET_DIR"
 for dir in *; do
-  [[ -d "$dir" ]] && zip -r "$dir".zip "$dir"
+  [[ -d "$dir" ]] && zip -r "$dir".zip "$dir" &
 done
+wait
