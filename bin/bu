@@ -4,7 +4,7 @@ set -ux
 # This also update casks
 brew update
 
-brew upgrade -v
+brew upgrade
 
 brew cu -a
 [[ $? -ne 0 ]] && brew tap buo/cask-upgrade && brew cu
