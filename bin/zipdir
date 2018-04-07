@@ -14,4 +14,6 @@ cd "$TARGET_DIR"
 for dir in *; do
   [[ -d "$dir" ]] && zip -r "$dir".zip "$dir" &
 done
+
+# Wait until all child zip processes are done
 wait
