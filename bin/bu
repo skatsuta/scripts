@@ -10,4 +10,3 @@ brew cu -a -y
 [[ $? -ne 0 ]] && brew tap buo/cask-upgrade && brew cu -a -y
 
 brew cleanup
-brew cask cleanup
