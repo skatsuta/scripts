@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -eu
+
+FRAME_RATE=24
+
+if [[ $# != 2 ]]; then
+  echo "Usage: $0 <INPUT_FILE> <OUPUT_FILE>"
+  exit
+fi
+
+# Install ffmpeg if it does not exist
+! command -v ffmpeg > /dev/null && brew install ffmpeg
+
+time ffmpeg -i "$1" -r ${FRAME_RATE} "$2"
