@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+
+import glob
+import os
+import random
+import re
+import subprocess
+import sys
+from typing import List
+
+ARCHIVE_REGEX = re.compile(r'.(zip|rar)$')
+
+
+def list_files(base_dir: str) -> List[str]:
+    return glob.glob(os.path.join(base_dir, '**/*'), recursive=True)
+
+
+def select(files: List[str]) -> str:
+    selected = random.choice(files)
+    if ARCHIVE_REGEX.search(selected):
+        return selected
+    # Not an archive file, select again
+    print(f'{selected} is not an archive file; selecting again')
+    return select(files)
+
+
+def main():
+    base_dir = sys.argv[1]
+    files = list_files(base_dir)
+    selected_file = select(files)
+    print(f'Selected: {selected_file}')
+    subprocess.run(['open', selected_file])
+
+
+if __name__ == '__main__':
+    main()
