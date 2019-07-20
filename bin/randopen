@@ -12,7 +12,10 @@ CONTENT_REGEX = re.compile(r'\.(zip|rar|mp4|avi|mkv|wmv|flv|m4v|rmvb)$', flags=r
 
 
 def list_files(base_dir: str) -> List[str]:
-    return glob.glob(os.path.join(base_dir, '**/*'), recursive=True)
+    return [
+        f for f in glob.glob(os.path.join(base_dir, '**/*'), recursive=True)
+        if not os.path.isdir(f)
+    ]
 
 
 def select_file(files: List[str]) -> str:
