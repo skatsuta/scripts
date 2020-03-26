@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -ux
 
-# This also update casks
-brew update
-
 brew upgrade
 
 brew cask upgrade
