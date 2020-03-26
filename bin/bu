@@ -6,7 +6,6 @@ brew update
 
 brew upgrade
 
-brew cu --all --yes
-[[ $? -ne 0 ]] && brew tap buo/cask-upgrade && brew cu --all --yes
+brew cask upgrade
 
 brew cleanup
