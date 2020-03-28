@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 set -ux
 
+# Update formulas and upgrade installed ones
 brew upgrade
 
-brew cask upgrade
+# Check if buo/cask-upgrade has been installed and install it if not
+brew cu --help &> /dev/null || brew tap buo/cask-upgrade
+# Upgrade all installed Casks
+brew cu --all --yes
 
+# Clean up outdated downloads
 brew cleanup
