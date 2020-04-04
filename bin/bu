@@ -7,7 +7,7 @@ brew upgrade
 # Check if buo/cask-upgrade has been installed and install it if not
 brew cu --help &> /dev/null || brew tap buo/cask-upgrade
 # Upgrade all installed Casks
-brew cu --all --yes
+brew cu --all --yes --no-brew-update
 
 # Clean up outdated downloads
 brew cleanup
