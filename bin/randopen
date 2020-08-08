@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
 import random
-import re
 import subprocess
 import sys
 from pathlib import Path
 from typing import List
 
-CONTENT_REGEX = re.compile(r'\.(zip|rar|mp4|avi|mkv|wmv|flv|m4v|rmvb)$', flags=re.IGNORECASE)
+TARGET_EXTS = {'.zip', '.rar', '.mp4', '.avi', '.mkv', '.wmv', '.flv', '.m4v', '.rmvb'}
 
 
 def main() -> None:
@@ -28,10 +27,11 @@ def main() -> None:
 
 def select_file(files: List[str]) -> str:
     selected = random.choice(files)
-    if CONTENT_REGEX.search(selected):
+    # Check if the selected file has one of target extensions
+    if Path(selected).suffix in TARGET_EXTS:
         return selected
 
-    print(f'{selected} is not a content file; selecting again...')
+    print(f'{selected} does not have one of target extensions; selecting again...')
     return select_file(files)
 
 
