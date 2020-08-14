@@ -12,9 +12,16 @@ TARGET_EXTS = {'.zip', '.rar', '.mp4', '.avi', '.mkv', '.wmv', '.flv', '.m4v', '
 def main() -> None:
     # Base directory
     base_dir = Path(sys.argv[1])
+    if not base_dir.exists():
+        print(f'ERROR: Could not find {base_dir} directory')
+        return
 
     # List all files in the base directory recursively
     files = [str(f) for f in base_dir.rglob('*') if f.is_file()]
+    if not files:
+        print(f'ERROR: Could not find any files in {base_dir}')
+        return
+
     print(f'Total number of files: {len(files)}')
 
     # Select a single file among them
